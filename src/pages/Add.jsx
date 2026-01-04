@@ -3,6 +3,7 @@ import { Box, Button, FormControl, InputLabel, MenuItem, Paper, Select, TextFiel
 import { Link, useNavigate } from 'react-router-dom'
 import axios from "axios";
 import { toast } from 'react-toastify';
+import { baseUrl } from '../api';
 export default function Add() {
   const navigate=useNavigate();
   const [formData, setformData] = useState({
@@ -15,7 +16,7 @@ const[isLoading,setIsLoading]=useState(false);
     //console.log(formData);
     setIsLoading(true);
     try {
-      const res=await axios.post(`http://localhost:5000/api/expense/insert`,formData)
+      const res=await axios.post(`${baseUrl}/api/expense/insert`,formData)
       
       
       //console.log(res);
