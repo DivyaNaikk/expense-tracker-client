@@ -3,6 +3,7 @@ import { Box, Button, FormControl, InputLabel, MenuItem, Paper, Select, TextFiel
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 import { toast } from 'react-toastify';
+import { baseUrl } from '../api';
 export default function Edit() {
 
   const params=useParams()
@@ -20,7 +21,7 @@ export default function Edit() {
 const[isLoading,setIsLoading]=useState(false);
 const fetchSingleExpenses=async()=>{
   try {
-    const res=await axios.get(`http://localhost:5000/api/expense/view/${id}`)
+    const res=await axios.get(`${baseUrl}/api/expense/view/${id}`)
     //console.log(res.data);
 
     if (res.data.success) {
@@ -44,7 +45,7 @@ fetchSingleExpenses();
     //console.log(formData);
     setIsLoading(true);
     try {
-      const res=await axios.put(`http://localhost:5000/api/expense/edit/${id}`,formData)
+      const res=await axios.put(`${baseUrl}/api/expense/edit/${id}`,formData)
       
       
       //console.log(res);
